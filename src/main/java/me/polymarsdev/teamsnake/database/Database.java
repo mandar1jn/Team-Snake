@@ -41,7 +41,7 @@ public class Database {
                     prop.setProperty("mysql.port", "3306");
                     prop.setProperty("mysql.database", "teamsnake");
                     prop.setProperty("mysql.username", "teamsnake");
-                    prop.setProperty("mysql.password", "S�cUr�_P4$sW0rD");
+                    prop.setProperty("mysql.password", "S€cUr€_P4$sW0rD");
                     prop.store(new FileOutputStream(mysql_config), "MySQL configuration");
                 }
                 Class.forName("com.mysql.cj.jdbc.Driver");
