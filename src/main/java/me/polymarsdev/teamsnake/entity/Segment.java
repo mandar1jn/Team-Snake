@@ -25,23 +25,19 @@ public class Segment implements Serializable {
         return y;
     }
 
-    boolean moveUp() { //move functions only used on head
+    void moveUp() { //move functions only used on head
         y -= 1;
-        return true;
     }
 
-    boolean moveDown() {
+    void moveDown() {
         y += 1;
-        return true;
     }
 
-    boolean moveLeft() {
+    void moveLeft() {
         x -= 1;
-        return true;
     }
 
-    boolean moveRight() {
+    void moveRight() {
         x += 1;
-        return true;
     }
 }
