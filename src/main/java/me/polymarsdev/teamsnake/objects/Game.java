@@ -37,10 +37,20 @@ public class Game implements Serializable {
             }
             return direction;
         }
-        if (direction.equals("left")) grid.getSnake().setDirection(W);
-        else if (direction.equals("right")) grid.getSnake().setDirection(E);
-        else if (direction.equals("up")) grid.getSnake().setDirection(N);
-        else if (direction.equals("down")) grid.getSnake().setDirection(S);
+        switch (direction) {
+            case "left":
+                grid.getSnake().setDirection(W);
+                break;
+            case "right":
+                grid.getSnake().setDirection(E);
+                break;
+            case "up":
+                grid.getSnake().setDirection(N);
+                break;
+            case "down":
+                grid.getSnake().setDirection(S);
+                break;
+        }
         // "get-grid" should only return the current grid without any action
         // if the @param direction is not get-grid, run an action, otherwise don't
         if (!direction.equals("get-grid")) {
