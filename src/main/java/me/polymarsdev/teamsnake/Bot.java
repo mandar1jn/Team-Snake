@@ -74,7 +74,7 @@ public class Bot extends ListenerAdapter {
         }
         if (token == null) return;
         // Load resources and configurations
-        boolean loaded = loadResource("settings.yml"); // Awaiting result
+        boolean loaded = loadResource(); // Awaiting result
         if (!loaded) {
             System.out.println("[ERROR] Fatal: Could not load resource \"settings.yml\" - exiting");
             System.exit(0);
@@ -245,20 +245,20 @@ public class Bot extends ListenerAdapter {
         return "s!";
     }
 
-    private static boolean loadResource(String resource) throws Exception {
+    private static boolean loadResource() throws Exception {
         File targetFile = new File("settings.yml");
         if (targetFile.exists()) {
             System.out.println("[INFO] Resource already exists - skipping");
             return true;
         }
-        InputStream is = Bot.class.getClassLoader().getResourceAsStream(resource);
+        InputStream is = Bot.class.getClassLoader().getResourceAsStream("settings.yml");
         if (is == null) {
-            System.out.println("[ERROR] Failed to load resource " + resource + ": Invalid InputStream");
+            System.out.println("[ERROR] Failed to load resource " + "settings.yml" + ": Invalid InputStream");
             return false;
         }
         byte[] buffer = new byte[is.available()];
         int read = is.read(buffer);
-        System.out.println("[INFO] Read " + read + "B from resource " + resource);
+        System.out.println("[INFO] Read " + read + "B from resource " + "settings.yml");
         OutputStream outStream = new FileOutputStream(targetFile);
         outStream.write(buffer);
         outStream.flush();
