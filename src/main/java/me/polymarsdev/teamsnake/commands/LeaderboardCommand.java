@@ -64,7 +64,7 @@ public class LeaderboardCommand extends Command {
                     }
                     if (rank < offset) continue;
                     if (rank > to && printedSelf) break;
-                    if (!printedSelf && rank > to && !guildId.equals(selfId)) continue;
+                    if (!printedSelf && rank > to) continue;
                     Guild g = Bot.getShardManager().getGuildById(guildId);
                     int bestscore = Integer.parseInt(rs.getString("statValue"));
                     if (g == null) {
