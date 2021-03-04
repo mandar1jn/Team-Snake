@@ -22,24 +22,24 @@ public class ServerCommand extends Command {
         Member m = e.getMember();
         if (!m.hasPermission(Permission.MANAGE_SERVER)) {
             e.reply(MessageUtil.err(null, m.getAsMention()
-                    + " » You are not permitted to use this command.\nOnly members with the `Manage Server` "
+                    + " ï¿½ You are not permitted to use this command.\nOnly members with the `Manage Server` "
                     + "permission are allowed to use this."));
             return;
         }
         User u = e.getAuthor();
         Guild guild = e.getGuild();
-        TextChannel tc = e.getTextChannel();
+        e.getTextChannel();
         String guildId = guild.getId();
         String[] args = e.getArgs();
         String prefix = Bot.getPrefix(guild);
         if (args.length < 1) {
-            e.reply(MessageUtil.info(null, u.getAsMention() + " » Please use `" + prefix + "server <stop/channels>`"));
+            e.reply(MessageUtil.info(null, u.getAsMention() + " ï¿½ Please use `" + prefix + "server <stop/channels>`"));
             return;
         }
         String arg = args[0].toLowerCase();
         if (arg.equals("channels")) {
             if (args.length < 2) {
-                e.reply(MessageUtil.info(null, u.getAsMention() + " » Please use `" + prefix
+                e.reply(MessageUtil.info(null, u.getAsMention() + " ï¿½ Please use `" + prefix
                         + "server channels <toggle/list/add/remove/togglenotify> ...`"));
                 return;
             }
@@ -186,18 +186,18 @@ public class ServerCommand extends Command {
                     if (args[1].equalsIgnoreCase("confirm")) {
                         GameManager.getGame(guildId).shutdownGame("Shutdown by " + u.getAsTag());
                         e.reply(MessageUtil.success(null, u.getAsMention()
-                                + " » Successfully shutdown the game of this server."));
+                                + " ï¿½ Successfully shutdown the game of this server."));
                         return;
                     }
                 }
                 e.reply(MessageUtil.info(null, u.getAsMention()
-                        + " » This command will shutdown the current game of this server" + ".\nPlease confirm using `"
+                        + " ï¿½ This command will shutdown the current game of this server" + ".\nPlease confirm using `"
                         + prefix + "server stop confirm`"));
                 return;
             }
-            e.reply(MessageUtil.err(null, u.getAsMention() + " » There is no active game in this server."));
+            e.reply(MessageUtil.err(null, u.getAsMention() + " ï¿½ There is no active game in this server."));
             return;
         }
-        e.reply(MessageUtil.err(null, u.getAsMention() + " » Invalid argument."));
+        e.reply(MessageUtil.err(null, u.getAsMention() + " ï¿½ Invalid argument."));
     }
 }
