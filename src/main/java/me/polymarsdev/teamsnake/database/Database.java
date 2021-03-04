@@ -11,28 +11,17 @@ public class Database {
 
     public enum DBType {MySQL, SQLite}
 
-    /**
-     * SQLite Data
-     * Set this data if you use DBType#SQLite
-     * <p>
-     * field filePath - This can either be a relative or absolute path.
-     * ex: teamsnake.db
-     * or: C:/sqlite/db/teamsnake.db
-     */
-    private final String filePath = "teamsnake.db";
-
-    /**
-     * MySQL Data
-     * Set this data if you use DBType#MySQL
-     */
-    private final String mysql_config = "teamsnake_mysql.conf";
-
     private Connection con = null;
 
     public Database(DBType dbType) {
         try {
             if (dbType == DBType.MySQL) {
                 Properties prop = new Properties();
+                /**
+                 * MySQL Data
+                 * Set this data if you use DBType#MySQL
+                 */
+                String mysql_config = "teamsnake_mysql.conf";
                 File file = new File(mysql_config);
                 boolean newFile = false;
                 if (!file.exists()) {
@@ -52,7 +41,7 @@ public class Database {
                     prop.setProperty("mysql.port", "3306");
                     prop.setProperty("mysql.database", "teamsnake");
                     prop.setProperty("mysql.username", "teamsnake");
-                    prop.setProperty("mysql.password", "S€cUr€_P4$sW0rD");
+                    prop.setProperty("mysql.password", "Sï¿½cUrï¿½_P4$sW0rD");
                     prop.store(new FileOutputStream(mysql_config), "MySQL configuration");
                 }
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -67,6 +56,15 @@ public class Database {
                         mysql_password);
                 System.out.println("[INFO] Successfully initialized database connection.");
             } else if (dbType == DBType.SQLite) {
+                /**
+                 * SQLite Data
+                 * Set this data if you use DBType#SQLite
+                 * <p>
+                 * field filePath - This can either be a relative or absolute path.
+                 * ex: teamsnake.db
+                 * or: C:/sqlite/db/teamsnake.db
+                 */
+                String filePath = "teamsnake.db";
                 File sqliteFile = new File(filePath);
                 if (!sqliteFile.exists()) {
                     System.out.println("[INFO] SQLite file \"" + filePath + "\" not found, creating file...");
