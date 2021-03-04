@@ -21,8 +21,8 @@ public class Tile implements Serializable {
     final int APPLE = 2;
     final int SEGMENT = 1;
     final int GROUND = 0;
-    int status = 0;
-    int skin = 0;
+    int status;
+    int skin;
     public Tile(int status, int skin)
     {
         this.status = status;
