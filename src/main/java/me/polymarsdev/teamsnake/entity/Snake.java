@@ -23,7 +23,7 @@ public class Snake implements Serializable {
     final int S = 2;
     final int W = 3;
     int direction = E;
-    int size = 0;
+    int size;
     int snakeMode = CLASSIC;
     int appleMode = SINGLE;
     boolean yummed = false;
